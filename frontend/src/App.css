@@ -29,6 +29,7 @@ body, html, #root { margin: 0; height: 100%; }
 .badge { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
 .scene-panel canvas { width: 100% !important; height: 100% !important; }
 .placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #667; }
+.label3d { font-size: 12px; white-space: nowrap; background: rgba(0,0,0,0.55); padding: 1px 5px; border-radius: 3px; }
 .statusbar { display: flex; gap: 22px; padding: 6px 12px; border-top: 1px solid #222; font-size: 13px; background: #12151b; }
 .statusbar b { color: #fff; }
 .warn { color: #ffcc00; font-style: normal; }
