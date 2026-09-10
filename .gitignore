@@ -1,0 +1,31 @@
+# media / models / data
+data/
+*.mp4
+*.webm
+*.mkv
+*.pkl
+*.pth
+*.onnx
+*.caffemodel
+backend/weights/
+backend/data/
+backend/logs/
+backend/third_party/
+backend/patches/*.orig
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+YOLOX_outputs/
+
+# node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# misc
+.claude/
+*.log
+Thumbs.db
+.DS_Store

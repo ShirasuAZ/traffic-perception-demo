@@ -1,0 +1,55 @@
+diff --git a/libs/models/layers/nms/src/nms.egg-info/PKG-INFO b/libs/models/layers/nms/src/nms.egg-info/PKG-INFO
+index df12441..0254b3c 100644
+--- a/libs/models/layers/nms/src/nms.egg-info/PKG-INFO
++++ b/libs/models/layers/nms/src/nms.egg-info/PKG-INFO
+@@ -1,10 +1,5 @@
+-Metadata-Version: 1.0
++Metadata-Version: 2.4
+ Name: nms
+ Version: 0.0.0
+-Summary: UNKNOWN
+-Home-page: UNKNOWN
+-Author: UNKNOWN
+-Author-email: UNKNOWN
+-License: UNKNOWN
+-Description: UNKNOWN
+-Platform: UNKNOWN
+\ No newline at end of file
++License-File: LICENSE
++Dynamic: license-file
+diff --git a/libs/models/layers/nms/src/nms.egg-info/SOURCES.txt b/libs/models/layers/nms/src/nms.egg-info/SOURCES.txt
+index bc63f31..be72857 100644
+--- a/libs/models/layers/nms/src/nms.egg-info/SOURCES.txt
++++ b/libs/models/layers/nms/src/nms.egg-info/SOURCES.txt
+@@ -1,3 +1,4 @@
++LICENSE
+ setup.py
+ src/nms.cpp
+ src/nms_kernel.cu
+diff --git a/libs/models/layers/nms/src/nms.egg-info/dependency_links.txt b/libs/models/layers/nms/src/nms.egg-info/dependency_links.txt
+index e69de29..8b13789 100644
+--- a/libs/models/layers/nms/src/nms.egg-info/dependency_links.txt
++++ b/libs/models/layers/nms/src/nms.egg-info/dependency_links.txt
+@@ -0,0 +1 @@
++
+diff --git a/libs/models/layers/nms/src/nms.egg-info/top_level.txt b/libs/models/layers/nms/src/nms.egg-info/top_level.txt
+index fa8dcc8..b70b6d7 100644
+--- a/libs/models/layers/nms/src/nms.egg-info/top_level.txt
++++ b/libs/models/layers/nms/src/nms.egg-info/top_level.txt
+@@ -1 +1 @@
+-nms
+\ No newline at end of file
++nms
+diff --git a/libs/models/layers/nms/src/nms_kernel.cu b/libs/models/layers/nms/src/nms_kernel.cu
+index 0106432..dd975be 100644
+--- a/libs/models/layers/nms/src/nms_kernel.cu
++++ b/libs/models/layers/nms/src/nms_kernel.cu
+@@ -168,7 +168,7 @@ std::vector<at::Tensor> nms_cuda_forward(
+   CHECK_CONTIGUOUS(idx);
+   CHECK_CONTIGUOUS(mask);
+ 
+-  AT_DISPATCH_FLOATING_TYPES(boxes.type(), "nms_cuda_forward", ([&] {
++  AT_DISPATCH_FLOATING_TYPES(boxes.scalar_type(), "nms_cuda_forward", ([&] {
+     nms_kernel<<<blocks, threads>>>(boxes_num,
+                                     (scalar_t)nms_overlap_thresh,
+                                     boxes.data<scalar_t>(),

@@ -1,0 +1,25 @@
+# 环境说明见 README.md（micromamba env: python 3.11, cuda-toolkit 12.8, gcc 13）
+# torch/torchvision 需从 https://download.pytorch.org/whl/cu128 安装
+torch>=2.7
+torchvision
+numpy
+scipy
+opencv-python-headless
+pyyaml
+websockets
+fastapi
+uvicorn[standard]
+python-multipart
+aiortc
+transformers>=4.50
+huggingface_hub
+mmengine==0.10.5
+mmdet==3.3.0
+# mmcv==2.2.0 需针对 sm_120 源码编译：MMCV_WITH_OPS=1 TORCH_CUDA_ARCH_LIST=12.0 pip install --no-build-isolation --no-binary mmcv mmcv==2.2.0
+albumentations
+p_tqdm
+loguru
+tabulate
+caffe2onnx    # 仅用其 protobuf 定义读取 Apollo caffemodel（需 PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python）
+onnx
+# map-anything: pip install -e third_party/map-anything

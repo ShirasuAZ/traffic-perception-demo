@@ -1,0 +1,17 @@
+import numpy as np
+from perception.calib import Calib
+c = Calib(fx=1000, fy=1000, cx=960, cy=540, width=1920, height=1080, cam_height_m=1.5, pitch_deg=3.0)
+pts = np.array([[10, -1.8, 0], [30, 1.8, 0], [50, 0, 5.0]])
+uv, z = c.ego_to_pixel(pts)
+back = c.pixel_to_ground(uv[:2])
+print("uv", uv.round(1).tolist(), "depth", z.round(2).tolist())
+print("ipm roundtrip err", np.abs(back - pts[:2]).max().round(6))
+print("depth roundtrip err", np.abs(c.pixel_depth_to_ego(uv, z) - pts).max().round(6))
+print("horizon row", round(c.horizon_v(), 1))
+c2 = Calib(fx=1000, fy=1000, cx=960, cy=540, width=1920, height=1080, cam_height_m=1.5)
+c2.set_pitch_from_vanishing_point((960, c.horizon_v())); print("pitch recovered", round(c2.pitch_deg, 3))
+c2.cam_height_m = 1.0; sep = c2.set_height_from_lane_width(uv[:1], c.ego_to_pixel([[10, 1.95, 0]])[0]); print("height recovered", round(c2.cam_height_m, 3))
+c3 = Calib(fx=1000, fy=1000, cx=960, cy=540, width=1920, height=1080, cam_height_m=1.5, pitch_deg=3.0, yaw_deg=2.0)
+vp, _ = c3.ego_to_pixel([[1e6, 0, 0]])
+c4 = Calib(fx=1000, fy=1000, cx=960, cy=540, width=1920, height=1080, cam_height_m=1.5); c4.set_pitch_from_vanishing_point(vp[0])
+print("pitch/yaw recovered", round(c4.pitch_deg, 3), round(c4.yaw_deg, 3))

@@ -1,0 +1,22 @@
+diff --git a/tools/demo.py b/tools/demo.py
+index 29122a3..91c4551 100644
+--- a/tools/demo.py
++++ b/tools/demo.py
+@@ -201,7 +201,7 @@ def image_demo(predictor, vis_folder, path, current_time, save_result):
+             save_file_name = os.path.join(save_folder, os.path.basename(image_name))
+             logger.info("Saving detection result in {}".format(save_file_name))
+             cv2.imwrite(save_file_name, result_image)
+-        ch = cv2.waitKey(0)
++        ch = cv2.waitKey(1) if not save_result else ord("q")
+         if ch == 27 or ch == ord("q") or ch == ord("Q"):
+             break
+ 
+@@ -280,7 +280,7 @@ def main(exp, args):
+         else:
+             ckpt_file = args.ckpt
+         logger.info("loading checkpoint")
+-        ckpt = torch.load(ckpt_file, map_location="cpu")
++        ckpt = torch.load(ckpt_file, map_location="cpu", weights_only=False)
+         # load the model state dict
+         model.load_state_dict(ckpt["model"])
+         logger.info("loaded checkpoint done.")

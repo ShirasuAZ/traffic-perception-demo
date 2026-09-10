@@ -1,0 +1,34 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, "Segoe UI", "Microsoft YaHei", sans-serif;
+  background: #0b0d11;
+  color: #e6e6e6;
+}
+body, html, #root { margin: 0; height: 100%; }
+.app { display: flex; flex-direction: column; height: 100vh; }
+.controls { padding: 8px 12px; border-bottom: 1px solid #222; display: flex; flex-direction: column; gap: 6px; background: #12151b; }
+.row { display: flex; align-items: center; gap: 8px; }
+.row label { width: 48px; color: #9aa; font-size: 13px; }
+.row input, .row select, .row button { background: #1c2028; color: #eee; border: 1px solid #333; border-radius: 4px; padding: 4px 8px; font-size: 13px; }
+.row button.primary { background: #2d6cdf; border-color: #2d6cdf; }
+.row button:disabled { opacity: 0.5; }
+.muted { color: #9aa; font-size: 13px; }
+.small { font-size: 12px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; background: #d33; }
+.dot.ok { background: #3c3; }
+.state { padding: 2px 8px; border-radius: 10px; font-size: 12px; background: #333; }
+.state-running { background: #1f7a3a; }
+.state-calibrating, .state-loading { background: #8a6d1f; }
+.state-error { background: #8a1f1f; }
+.err { color: #f66; }
+.log { max-height: 160px; overflow: auto; background: #000; padding: 6px; font-size: 11px; margin: 0; }
+.main { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; min-height: 0; }
+.panel { position: relative; background: #0e1116; border: 1px solid #222; border-radius: 6px; overflow: hidden; min-height: 0; }
+.video-panel video { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
+.video-panel canvas.overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.badge { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+.scene-panel canvas { width: 100% !important; height: 100% !important; }
+.placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #667; }
+.statusbar { display: flex; gap: 22px; padding: 6px 12px; border-top: 1px solid #222; font-size: 13px; background: #12151b; }
+.statusbar b { color: #fff; }
+.warn { color: #ffcc00; font-style: normal; }
